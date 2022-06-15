@@ -10,7 +10,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 
 late final MyHelper h;
-const BACKGROUND_COLOR = Colors.white;
+const BACKGROUND_COLOR = Colors.grey;
 //const APP_UI_COLOR_MAIN = Colors.blue;
 // const APP_UI_COLOR_SECONDARY = Colors.grey;
 const APP_UI_COLOR_MAIN = Color(0xFF002B4D);
@@ -56,7 +56,7 @@ class DrawingPageState extends State<DrawingPage> {
   _save() async{
     try{
       final boundary = _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
-      final image = await boundary.toImage(); // not supported in web html renderer https://github.com/flutter/flutter/issues/57631, https://github.com/flutter/flutter/issues/47721
+      final image = await boundary.toImage();
       final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
       final screenshot = byteData?.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
       if (screenshot == null) return h.showToast("Failed to save canvas to image.");

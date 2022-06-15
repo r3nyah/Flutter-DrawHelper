@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     //_urlController.text = 'https://i.imgur.com/jiw5Da0.jpg';
-    _urlController.text = 'https://i.imgur.com/irDoWxi.jpeg';
+    _urlController.text = 'https://i.imgur.com/4pkVNv2.jpg';
     h = MyHelper(context);
     super.initState();
   }
@@ -89,26 +89,29 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _image != null ? null : AppBar(
-        title: const Text("Draw"),
+        title: const Text("Draw Helper"),
+        backgroundColor: Color(0xFF002B4D),
+        centerTitle: true,
       ) ,
       body: SafeArea(
-        child: Center(
+        child: Container(
+          color: Color(0xFFADD8E6),
           child: _isProcessing ? const CircularProgressIndicator.adaptive():SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.fromLTRB(30, 50, 30, 50),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: _image == null ? [
                 const Text("Paste image URL here:", textAlign: TextAlign.center,),
                 const SizedBox(height: 20,),
-                TextField(controller: _urlController,),
+                TextField(controller: _urlController,textAlign: TextAlign.center,),
                 const SizedBox(height: 20,),
-                ElevatedButton(onPressed: _submit, child: const Text("Okay"))
+                ElevatedButton(onPressed: _submit,style: ElevatedButton.styleFrom(primary: Color(0xFFFF002B4D)), child: const Text("Next"),),
               ] : [
                 Row(
                   children: [
-                    Expanded(child: ElevatedButton(onPressed: _back, child: const Text("Back"))),
+                    Expanded(child: ElevatedButton(onPressed: _back,style: ElevatedButton.styleFrom(primary: Color(0xFFFF002B4D)), child: const Text("Back"))),
                     const SizedBox(width: 20,),
-                    Expanded(child: ElevatedButton(onPressed: _save, child: const Text("Save"))),
+                    Expanded(child: ElevatedButton(onPressed: _save,style: ElevatedButton.styleFrom(primary: Color(0xFFFF002B4D)), child: const Text("Save"))),
                   ],
                 ),
                 const SizedBox(height: 20,),
